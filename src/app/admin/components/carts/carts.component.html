@@ -1,0 +1,112 @@
+<div class="cartBox">
+    <form [formGroup]="form">
+        <div class="row justify-content-center my-5">
+            <div class="col-md-3">
+                <label for="">Start Date</label>
+                <input type="date" formControlName="start" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="">End Date</label>
+                <input type="date" formControlName="end" class="form-control">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <label for=""></label>
+                <button class="btn btn-success" (click)="applyFilter()">Apply</button>
+            </div>
+        </div>
+    </form>
+
+
+    <table class="table table-striped text-center">
+        <thead>
+            <tr class="">
+                <th></th>
+                <th>Date the cart was placed</th>
+                <th style="width: 25%">No. of items in cart</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let item of carts; let index=index">
+                <ng-container>
+                    <td></td>
+                    <td>{{ item.date | date:"shortDate" }}</td>
+                    <td>{{ item.products.length }}</td>
+                    <td>
+                        <button class="btn btn-danger me-3" (click)="deleteCart(item.id)">
+                            Delete
+                        </button>
+                        <button class=" btn btn-info" (click)="viewCart(item.products)" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            View Cart
+                        </button>
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="isCartDeleted" class="alert alert-warning">Cart Deleted!</div>
+</div>
+
+<!-- Modal To show a specific cart -->
+<div class="modal fade  modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Products in cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Products in this cart -->
+                <div class="cartBox">
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr class="">
+                                <th>Product Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th style="width: 25%">Quantity</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let item of productsInViewedCart; let index=index">
+                                <td><img src="{{ item.product.image}}" alt="asdf" /></td>
+                                <td>{{ item.product.title }}</td>
+                                <td>${{ item.product.price }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ (item.quantity * item.product.price).toFixed(2) }}L.E</td>
+                                <td>
+                                    <button class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <!-- <th>Total: ${{ cartTotal.toFixed(2) }}</th> -->
+                                <th>
+                                    <!-- <button class="btn btn-success" (click)="orderNow()">
+                                    Order Now
+                                    </button> -->
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<nav class="container-fluid py-3 px-5 justify-content-center">
+  <div class="row">
+    <h2 class="col-md-7 col-sm-12"><span class="logo" routerLink="products">AngularMart</span></h2>
+    <ul
+      class="col-md-5 col-sm-12 d-flex flex-column flex-sm-row justify-content-around align-items-center list-unstyled m-0">
+      <li *ngIf="!isLogin" routerLink="products">Home</li>
+      <li *ngIf="!isLogin" routerLink="/cart">Cart</li>
+      <li *ngIf="isLogin" routerLink="admin/products">Manage Products</li>
+      <li *ngIf="isLogin" routerLink="admin/carts">Manage Carts</li>
+      <li *ngIf="!isLogin" routerLink="/login">Login</li>
+      <li *ngIf="isLogin" (click)="logout()">Logout</li>
+      <li *ngIf="!isLogin" routerLink="/register">Register</li>
+    </ul>
+  </div>
+</nav>

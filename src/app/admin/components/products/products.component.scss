@@ -1,0 +1,65 @@
+table {
+  width: 100%;
+
+  th {
+    padding: 0.5rem;
+  }
+
+  td {
+    vertical-align: middle;
+    padding: 0.5rem;
+
+    &.title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: scale-down;
+    border-radius: 2rem;
+  }
+
+
+
+  // .quantity {
+  //   display: flex;
+  //   align-items: center;
+
+  //   .btn {
+  //     padding: 0.25rem 0.5rem;
+  //     font-size: 0.8rem;
+  //     border-radius: 5px;
+
+  //     &:first-child {
+  //       margin-right: 0.5rem;
+  //     }
+
+  //     &:last-child {
+  //       margin-left: 0.5rem;
+  //     }
+  //   }
+
+  //   input[type="number"] {
+  //     width: 60px;
+  //     text-align: center;
+  //     border-radius: 5px;
+  //   }
+  // }
+
+  // tfoot {
+  //   th {
+  //     text-align: right;
+  //   }
+
+  //   .btn-success {
+  //     padding: 0.5rem 1rem;
+  //     font-size: 1rem;
+  //     border-radius: 5px;
+  //     background-color: #32cd32;
+  //   }
+  // }
+}

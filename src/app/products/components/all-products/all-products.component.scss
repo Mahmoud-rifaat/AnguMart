@@ -1,0 +1,16 @@
+.products {
+  .row {
+    div {
+      cursor: pointer;
+    }
+  }
+}
+
+#carouselExampleIndicators {
+  height: 500px;
+
+  .slider-img {
+    height: 500px !important;
+    object-fit: cover;
+  }
+}

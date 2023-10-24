@@ -1,0 +1,7 @@
+<label for="">{{ title }}</label>
+<select class="form-control" (change)="detectChanges($event)" style="cursor: pointer;">
+  <option value="all" *ngIf="all" selected>All</option>
+  <option *ngFor="let option of data" [selected]="option == selected">
+    {{ option }}
+  </option>
+</select>
